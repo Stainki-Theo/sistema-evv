@@ -1,0 +1,27 @@
+{
+  "id": "/",
+  "name": "Sistema EVV",
+  "short_name": "Sistema EVV",
+  "description": "Sistema operacional do Esquadrão de Voo a Vela",
+  "lang": "pt-BR",
+  "start_url": "/home?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "any",
+  "background_color": "#071927",
+  "theme_color": "#071927",
+  "categories": ["productivity", "utilities"],
+  "icons": [
+    { "src": "/icons/evv-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/evv-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/evv-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/evv-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Visão Geral", "short_name": "Visão Geral", "url": "/home", "icons": [{ "src": "/icons/evv-192.png", "sizes": "192x192" }] },
+    { "name": "Anotador", "short_name": "Anotador", "url": "/anotador", "icons": [{ "src": "/icons/evv-192.png", "sizes": "192x192" }] },
+    { "name": "Disponibilidade", "short_name": "Disponibilidade", "url": "/disponibilidade", "icons": [{ "src": "/icons/evv-192.png", "sizes": "192x192" }] },
+    { "name": "Minha Conta", "short_name": "Minha Conta", "url": "/conta", "icons": [{ "src": "/icons/evv-192.png", "sizes": "192x192" }] }
+  ]
+}

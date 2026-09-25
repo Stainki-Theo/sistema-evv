@@ -1,0 +1,310 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-navy-soft: var(--navy-soft);
+  --color-aviation: var(--aviation);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --font-sans: "Inter", "Barlow", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.975 0.008 220);
+  --foreground: oklch(0.22 0.045 254);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.045 254);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.045 254);
+  --primary: oklch(0.72 0.12 174);
+  --primary-foreground: oklch(0.2 0.045 205);
+  --secondary: oklch(0.94 0.012 250);
+  --secondary-foreground: oklch(0.28 0.05 254);
+  --muted: oklch(0.945 0.01 250);
+  --muted-foreground: oklch(0.5 0.03 254);
+  --accent: oklch(0.72 0.12 174);
+  --accent-foreground: oklch(0.99 0.005 250);
+  --destructive: oklch(0.53 0.2 27);
+  --destructive-foreground: oklch(0.99 0.005 250);
+  --border: oklch(0.9 0.012 250);
+  --input: oklch(0.9 0.012 250);
+  --ring: oklch(0.72 0.12 174);
+
+  /* EVV — identidade aeronáutica */
+  --navy: oklch(0.19 0.045 230);
+  --navy-foreground: oklch(0.97 0.008 250);
+  --navy-soft: oklch(0.27 0.055 222);
+  --aviation: oklch(0.67 0.12 176);
+  --success: oklch(0.58 0.14 152);
+  --success-foreground: oklch(0.99 0.005 150);
+  --warning: oklch(0.78 0.15 85);
+  --warning-foreground: oklch(0.25 0.05 85);
+  --danger: oklch(0.55 0.2 27);
+  --danger-foreground: oklch(0.99 0.005 27);
+  --info: oklch(0.6 0.11 245);
+  --info-foreground: oklch(0.99 0.005 245);
+  --shadow-panel: 0 1px 2px oklch(0.24 0.055 256 / 8%), 0 8px 24px -12px oklch(0.24 0.055 256 / 18%);
+
+  --chart-1: oklch(0.55 0.13 245);
+  --chart-2: oklch(0.58 0.14 152);
+  --chart-3: oklch(0.78 0.15 85);
+  --chart-4: oklch(0.55 0.2 27);
+  --chart-5: oklch(0.4 0.08 256);
+  --sidebar: oklch(0.24 0.055 256);
+  --sidebar-foreground: oklch(0.97 0.008 250);
+  --sidebar-primary: oklch(0.55 0.13 245);
+  --sidebar-primary-foreground: oklch(0.99 0.005 250);
+  --sidebar-accent: oklch(0.3 0.06 256);
+  --sidebar-accent-foreground: oklch(0.97 0.008 250);
+  --sidebar-border: oklch(0.32 0.05 256);
+  --sidebar-ring: oklch(0.55 0.13 245);
+}
+
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+.evv-login { position: relative; min-height: 100svh; display: grid; grid-template-columns: minmax(390px, 34rem) minmax(0, 1fr); align-items: center; overflow: hidden; padding: clamp(1.5rem, 4vw, 4rem); background: #071528; isolation: isolate; }
+.evv-login-backdrop { position: absolute; z-index: -2; inset: 0; background: url('/login-evv-primeiro-solo.webp') center center / cover no-repeat; transform: scale(1.01); }
+.evv-login::after { content: ""; position: absolute; z-index: -1; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgb(3 10 24 / .7) 0%, rgb(3 11 26 / .42) 29%, rgb(3 11 26 / .06) 52%, rgb(3 12 30 / .18) 100%), linear-gradient(0deg, rgb(3 10 22 / .36) 0%, transparent 38%); }
+.evv-login-brand { position: absolute; z-index: 2; left: clamp(1.5rem, 4vw, 4rem); top: clamp(1.5rem, 4vw, 3.5rem); display: flex; align-items: center; gap: .8rem; color: white; text-shadow: 0 2px 18px rgb(0 0 0 / .45); }
+.evv-login-brand img { width: 3.1rem; height: 3.1rem; object-fit: contain; filter: drop-shadow(0 8px 20px rgb(0 0 0 / .38)); }
+.evv-login-brand strong,.evv-login-brand small { display: block; }
+.evv-login-brand strong { font-size: 1.25rem; letter-spacing: .17em; }
+.evv-login-brand small { margin-top: .2rem; color: rgb(255 255 255 / .76); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
+.evv-login-copy { position: absolute; z-index: 1; right: clamp(1.5rem, 4vw, 4rem); top: clamp(2rem, 7vw, 6rem); max-width: 26rem; color: white; text-align: right; text-shadow: 0 3px 24px rgb(0 0 0 / .5); }
+.evv-login-copy p { margin: 0 0 1rem; color: #ffd25a; font-size: .72rem; font-weight: 850; letter-spacing: .2em; }
+.evv-login-copy h1 { margin: 0; font-size: clamp(2rem, 3.2vw, 3.7rem); line-height: 1.02; letter-spacing: -.045em; }
+.evv-login-panel { grid-column: 1; width: 100%; display: flex; align-items: center; justify-content: center; }
+.evv-login-card { width: 100%; max-width: 29rem; padding: clamp(1.75rem, 3vw, 2.6rem); background: rgb(250 252 255 / .92); border: 1px solid rgb(255 255 255 / .72); border-radius: 1.5rem; box-shadow: 0 30px 90px rgb(0 0 0 / .36), inset 0 1px 0 rgb(255 255 255 / .85); backdrop-filter: blur(18px) saturate(120%); }
+.evv-secure { display: flex; align-items: center; gap: .45rem; color: #0b756d; font-size: .68rem; font-weight: 850; letter-spacing: .14em; }
+.evv-secure i { width: .45rem; height: .45rem; border-radius: 999px; background: #25c6b0; box-shadow: 0 0 0 5px rgb(37 198 176 / .1); }
+.evv-login-card h2 { margin: 1.1rem 0 .55rem; color: #132238; font-size: clamp(2rem, 3vw, 2.45rem); line-height: 1.05; letter-spacing: -.045em; }
+.evv-login-intro { margin: 0 0 2rem; color: #6d7c8c; line-height: 1.55; }
+.evv-login-form { display: grid; gap: .7rem; }
+.evv-login-form label { color: #3e4e5d; font-size: .78rem; font-weight: 750; }
+.evv-login-form input { width: 100%; height: 3.35rem; padding: 0 1rem; color: #152332; background: rgb(255 255 255 / .92); border: 1px solid #d5dee6; border-radius: .8rem; outline: none; transition: .2s; }
+.evv-login-form input:focus { border-color: #25c6b0; box-shadow: 0 0 0 4px rgb(37 198 176 / .12); }
+.evv-password-label { margin-top: .55rem; display: flex; align-items: center; justify-content: space-between; }
+.evv-password-label button { color: #0e877a; background: none; border: 0; font-size: .74rem; font-weight: 700; }
+.evv-password-field { position: relative; }
+.evv-password-field input { padding-right: 3.2rem; }
+.evv-password-field button { position: absolute; right: .7rem; top: .6rem; width: 2.1rem; height: 2.1rem; display: grid; place-items: center; color: #83909c; background: transparent; border: 0; }
+.evv-login-submit { height: 3.45rem; margin-top: 1rem; display: flex; align-items: center; justify-content: center; gap: 1rem; color: white; background: #0d746d; border: 0; border-radius: .8rem; box-shadow: 0 10px 24px rgb(13 116 109 / .25); font-size: .88rem; font-weight: 800; transition: .2s; }
+.evv-login-submit:hover { transform: translateY(-1px); background: #095f59; }
+.evv-login-submit:disabled { cursor: wait; opacity: .65; }
+.evv-access-note { margin: 1.4rem 0 0; padding: .85rem 1rem; color: #647385; background: rgb(228 235 240 / .74); border-radius: .7rem; font-size: .7rem; line-height: 1.5; text-align: center; }
+.evv-login-card footer { margin-top: 1.4rem; color: #7b8792; font-size: .68rem; text-align: center; }
+
+@media (max-width: 900px) {
+  .evv-login { display: flex; align-items: center; justify-content: center; padding: 6.5rem 1rem 1.25rem; }
+  .evv-login-backdrop { background-position: 61% center; }
+  .evv-login::after { background: linear-gradient(180deg, rgb(4 12 29 / .22), rgb(4 11 26 / .52) 55%, rgb(4 10 23 / .72)); }
+  .evv-login-brand { left: 1.25rem; top: 1.25rem; }
+  .evv-login-copy { display: none; }
+  .evv-login-panel { width: 100%; }
+  .evv-login-card { max-width: 28rem; padding: 1.6rem; border-radius: 1.25rem; }
+}
+
+/* Minimal operational shell */
+.evv-app-shell { min-height: 100vh; background: #f3f6f8; color: #152332; }
+.evv-sidebar { position: fixed; inset: 0 auto 0 0; z-index: 50; width: 16rem; display: flex; flex-direction: column; overflow: hidden; color: #c6d3dc; background: #06111b; border-right: 1px solid rgb(255 255 255 / .055); }
+.evv-sidebar-brand { min-height: 5.4rem; padding: 1.25rem 1.2rem; display: flex; align-items: center; border-bottom: 1px solid rgb(255 255 255 / .065); }
+.evv-sidebar-brand > a { min-width: 0; display: flex; align-items: center; gap: .75rem; color: white; text-decoration: none; }
+.evv-sidebar-brand img { width: 2.65rem; height: 2.65rem; object-fit: contain; filter: drop-shadow(0 8px 14px rgb(0 0 0 / .28)); }
+.evv-sidebar-brand span,.evv-sidebar-brand strong,.evv-sidebar-brand small { display: block; }
+.evv-sidebar-brand strong { font-size: 1.05rem; line-height: 1; letter-spacing: .16em; }
+.evv-sidebar-brand small { margin-top: .35rem; color: #7790a0; font-size: .58rem; letter-spacing: .08em; text-transform: uppercase; }
+.evv-close-menu { display: none; margin-left: auto; color: #8fa4b1; background: transparent; border: 0; }
+.evv-sidebar-nav { flex: 1; overflow-y: auto; padding: 1.25rem .8rem; scrollbar-width: thin; scrollbar-color: #234052 transparent; }
+.evv-sidebar-nav section + section { margin-top: 1.3rem; }
+.evv-sidebar-nav h2 { margin: 0 0 .45rem; padding: 0 .72rem; color: #577183; font-size: .6rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.evv-sidebar-nav ul { margin: 0; padding: 0; display: grid; gap: .2rem; list-style: none; }
+.evv-nav-link { min-height: 2.55rem; padding: 0 .7rem; display: flex; align-items: center; gap: .7rem; color: #849ba9; border-radius: .7rem; font-size: .78rem; font-weight: 650; text-decoration: none; transition: .18s ease; }
+.evv-nav-link > svg:first-child { width: 1rem; height: 1rem; flex: 0 0 auto; }
+.evv-nav-link span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.evv-nav-link:hover { color: #e5f3f4; background: rgb(255 255 255 / .045); }
+.evv-nav-link.is-active { color: white; background: rgb(37 198 176 / .12); box-shadow: inset 3px 0 #25c6b0; }
+.evv-nav-link.is-active > svg:first-child { color: #42d3bd; }
+.evv-nav-chevron { width: .8rem !important; height: .8rem !important; margin-left: auto; opacity: 0; transition: .18s; }
+.evv-nav-link:hover .evv-nav-chevron,.evv-nav-link.is-active .evv-nav-chevron { opacity: .6; }
+.evv-sidebar-footer { padding: .8rem; border-top: 1px solid rgb(255 255 255 / .065); }
+.evv-install-sidebar { width: 100%; margin-bottom: .55rem; padding: .7rem .75rem; display: flex; align-items: center; gap: .65rem; color: #d9e8ec; text-align: left; background: rgb(37 198 176 / .09); border: 1px solid rgb(37 198 176 / .18); border-radius: .75rem; transition: .2s ease; }
+.evv-install-sidebar:hover { background: rgb(37 198 176 / .16); border-color: rgb(37 198 176 / .32); }
+.evv-install-sidebar > svg { color: #25c6b0; flex: 0 0 auto; }
+.evv-install-sidebar span,.evv-install-sidebar strong,.evv-install-sidebar small { display: block; }
+.evv-install-sidebar strong { font-size: .7rem; }
+.evv-install-sidebar small { margin-top: .12rem; color: #7894a1; font-size: .58rem; }
+.evv-install-suggestion { position: fixed; z-index: 80; right: 1rem; bottom: 1rem; width: min(430px, calc(100vw - 2rem)); display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .8rem; padding: 1rem; background: #fff; border: 1px solid #d9e4e8; border-radius: 1rem; box-shadow: 0 18px 60px rgb(4 24 35 / .24); }
+.evv-install-suggestion .evv-install-icon { width: 2.7rem; height: 2.7rem; display: grid; place-items: center; color: #087f73; background: #dff7f3; border-radius: .8rem; }
+.evv-install-suggestion strong { color: #0b2431; font-size: .9rem; }
+.evv-install-suggestion p { margin: .2rem 0 0; color: #617782; font-size: .75rem; line-height: 1.35; }
+.evv-install-close { position: absolute; top: .35rem; right: .35rem; display: grid; place-items: center; width: 1.8rem; height: 1.8rem; color: #758891; border-radius: 999px; }
+@media (max-width: 560px) { .evv-install-suggestion { grid-template-columns: auto 1fr; } .evv-install-suggestion > button:last-child { grid-column: 1 / -1; width: 100%; } }
+.evv-system-status { padding: .72rem .75rem; display: flex; align-items: center; gap: .65rem; background: rgb(255 255 255 / .035); border: 1px solid rgb(255 255 255 / .05); border-radius: .75rem; }
+.evv-system-status > i { width: .45rem; height: .45rem; flex: 0 0 auto; background: #25c6b0; border-radius: 999px; box-shadow: 0 0 0 5px rgb(37 198 176 / .1); }
+.evv-system-status span,.evv-system-status strong,.evv-system-status small { display: block; }
+.evv-system-status strong { color: #d9e8ec; font-size: .66rem; }
+.evv-system-status small { margin-top: .15rem; color: #607988; font-size: .56rem; }
+.evv-sidebar-user { margin-top: .7rem; padding: .75rem .5rem .2rem; display: flex; align-items: center; gap: .6rem; border-top: 1px solid rgb(255 255 255 / .05); }
+.evv-sidebar-user-copy { min-width: 0; flex: 1; }
+.evv-sidebar-user strong,.evv-sidebar-user small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.evv-sidebar-user strong { color: #eaf3f5; font-size: .68rem; letter-spacing: .03em; }
+.evv-sidebar-user small { margin-top: .2rem; color: #6e8796; font-size: .58rem; text-transform: uppercase; }
+.evv-sidebar-user button { padding: .45rem; color: #708895; background: transparent; border: 0; border-radius: .5rem; }
+.evv-sidebar-user button:hover { color: #eaf3f5; background: rgb(255 255 255 / .06); }
+.evv-app-main { min-height: 100vh; margin-left: 16rem; }
+.evv-topbar { position: sticky; top: 0; z-index: 30; min-height: 5.4rem; padding: 0 2rem; display: flex; align-items: center; gap: 1rem; background: rgb(255 255 255 / .94); border-bottom: 1px solid #e4eaf0; backdrop-filter: blur(14px); }
+.evv-menu-trigger { display: none; width: 2.4rem; height: 2.4rem; place-items: center; color: #536474; background: #f2f5f7; border: 1px solid #e4e9ed; border-radius: .7rem; }
+.evv-topbar > div:nth-child(2) span,.evv-topbar > div:nth-child(2) strong { display: block; }
+.evv-topbar > div:nth-child(2) span { color: #0e877a; font-size: .58rem; font-weight: 850; letter-spacing: .16em; }
+.evv-topbar > div:nth-child(2) strong { margin-top: .2rem; color: #223443; font-size: .95rem; }
+.evv-topbar-user { margin-left: auto; display: flex; align-items: center; gap: .7rem; }
+.evv-profile-notification-wrap { flex: 0 0 auto; }
+.evv-notification-glider { position: relative; width: 2.35rem; height: 2.35rem; display: grid; place-items: center; color: #087f73; background: #eef7f5; border: 1px solid #cfe6e2; border-radius: .75rem; box-shadow: 0 3px 9px rgb(4 42 54 / .08); }
+.evv-notification-glider:hover { color: #fff; background: #066b62; transform: translateY(-1px); }
+.evv-notification-glider > svg { transform: rotate(-8deg); }
+.evv-notification-glider > span { position: absolute; top: -.4rem; right: -.4rem; min-width: 1.1rem; height: 1.1rem; display: grid; place-items: center; padding: 0 .22rem; color: #fff; background: #d33f49; border: 2px solid #fff; border-radius: 999px; font-size: .56rem; font-weight: 800; line-height: 1; }
+.evv-topbar-user > span { text-align: right; }
+.evv-topbar-user strong,.evv-topbar-user small { display: block; }
+.evv-topbar-user strong { color: #344655; font-size: .76rem; }
+.evv-topbar-user small { margin-top: .15rem; color: #8795a0; font-size: .6rem; text-transform: uppercase; }
+.evv-content { width: 100%; max-width: 100rem; margin: 0 auto; padding: 2rem; }
+.evv-page-header { margin-bottom: 1.55rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+.evv-page-header p { margin: 0 0 .35rem; color: #0e877a; font-size: .58rem; font-weight: 850; letter-spacing: .16em; }
+.evv-page-header h1 { margin: 0; color: #172838; font-size: clamp(1.55rem, 2vw, 2rem); line-height: 1.08; letter-spacing: -.035em; }
+.evv-page-header span { display: block; margin-top: .4rem; color: #7b8995; font-size: .78rem; }
+.evv-page-actions { flex: 0 0 auto; }
+.evv-menu-overlay { display: none; }
+.evv-operation-hero { position: relative; min-height: 9.4rem; margin-bottom: 1rem; padding: 1.6rem 1.8rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; overflow: hidden; color: white; background: linear-gradient(118deg, #0a1d2b, #104154); border-radius: 1.15rem; box-shadow: 0 16px 42px rgb(15 36 55 / .12); }
+.evv-operation-hero::after { content: ""; position: absolute; right: 20%; top: -145%; width: 24rem; height: 24rem; border: 1px solid rgb(255 255 255 / .06); border-radius: 50%; box-shadow: 0 0 0 55px rgb(255 255 255 / .018),0 0 0 110px rgb(255 255 255 / .012); }
+.evv-operation-hero > * { position: relative; z-index: 1; }
+.evv-operation-hero p { margin: 0 0 .55rem; display: flex; align-items: center; gap: .55rem; color: #5be0ca; font-size: .6rem; font-weight: 850; letter-spacing: .15em; }
+.evv-operation-hero p i { width: .42rem; height: .42rem; background: #35cbb4; border-radius: 50%; box-shadow: 0 0 0 5px rgb(53 203 180 / .1); }
+.evv-operation-hero h2 { margin: 0 0 .45rem; font-size: clamp(1.2rem, 2vw, 1.55rem); letter-spacing: -.025em; }
+.evv-operation-hero > div:first-child > span { color: #a9bec8; font-size: .76rem; }
+.evv-operation-hero > div:first-child > span strong { color: #e5f6f3; }
+.evv-hero-metrics { display: flex; align-items: stretch; }
+.evv-hero-metrics > span { min-width: 9.8rem; padding: .25rem 1.35rem; display: grid; grid-template-columns: 1.4rem 1fr; grid-template-rows: auto auto; align-items: center; border-left: 1px solid rgb(255 255 255 / .12); }
+.evv-hero-metrics svg { grid-row: 1 / 3; width: 1.05rem; color: #55d9c2; }
+.evv-hero-metrics b { font-size: 1.15rem; line-height: 1.1; }
+.evv-hero-metrics small { margin-top: .25rem; color: #91aab7; font-size: .56rem; letter-spacing: .06em; text-transform: uppercase; }
+
+/* A quieter, denser treatment for data-heavy pages. */
+.evv-content table { font-size: .82rem; }
+.evv-content thead { background: #f7f9fa; }
+.evv-content th { color: #7f8e9b; font-size: .66rem; letter-spacing: .07em; text-transform: uppercase; }
+.evv-content input,.evv-content textarea,.evv-content select { border-radius: .7rem; }
+.evv-content a[class*="text-primary"] { color: #0e877a; font-weight: 700; text-underline-offset: 3px; }
+.evv-wx-options { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: .55rem; }
+.evv-wx-option { min-height: 3.6rem; padding: .65rem .5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .4rem; color: #71808c; background: #f7f9fa; border: 1px solid #e2e8ec; border-radius: .75rem; font-size: .66rem; font-weight: 800; letter-spacing: .04em; transition: .18s ease; }
+.evv-wx-option i { width: .45rem; height: .45rem; background: #aeb8bf; border-radius: 50%; }
+.evv-wx-option:hover { color: #334655; border-color: #b9c8d0; transform: translateY(-1px); }
+.evv-wx-option.is-selected { color: #0d665c; background: #e8f8f5; border-color: #55cfbd; box-shadow: 0 0 0 3px rgb(37 198 176 / .1); }
+.evv-wx-option.is-selected i { background: #25c6b0; box-shadow: 0 0 0 4px rgb(37 198 176 / .12); }
+.evv-wx-option.tone-warning.is-selected { color: #8a5b17; background: #fff7e8; border-color: #edbd68; box-shadow: 0 0 0 3px rgb(237 189 104 / .12); }
+.evv-wx-option.tone-warning.is-selected i { background: #e6a735; box-shadow: 0 0 0 4px rgb(230 167 53 / .12); }
+.evv-wx-option.tone-danger.is-selected { color: #a13e49; background: #fff0f1; border-color: #e18b94; box-shadow: 0 0 0 3px rgb(225 139 148 / .12); }
+.evv-wx-option.tone-danger.is-selected i { background: #dc6370; box-shadow: 0 0 0 4px rgb(220 99 112 / .12); }
+.evv-wx-preview { margin-bottom: .75rem; padding: .8rem 1rem; display: flex; align-items: center; justify-content: space-between; color: #0d665c; background: #e8f8f5; border: 1px solid #cbeee7; border-radius: .75rem; }
+.evv-wx-preview span { font-size: .63rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.evv-wx-preview strong { font-size: .85rem; }
+.evv-wx-preview.tone-warning { color: #8a5b17; background: #fff7e8; border-color: #f0d7a9; }
+.evv-wx-preview.tone-danger { color: #a13e49; background: #fff0f1; border-color: #efc4c8; }
+
+@media (max-width: 1023px) {
+  .evv-sidebar { transform: translateX(-100%); transition: transform .22s ease; box-shadow: 20px 0 50px rgb(2 12 20 / .22); }
+  .evv-sidebar.is-open { transform: translateX(0); }
+  .evv-close-menu,.evv-menu-trigger { display: grid; }
+  .evv-menu-overlay { position: fixed; inset: 0; z-index: 40; display: block; background: rgb(4 17 27 / .56); border: 0; backdrop-filter: blur(2px); }
+  .evv-app-main { margin-left: 0; }
+}
+
+@media (max-width: 640px) {
+  .evv-topbar { min-height: 4.5rem; padding: 0 1rem; }
+  .evv-topbar > div:nth-child(2) { display: none; }
+  .evv-topbar-user > span,.evv-topbar-user > button { display: none; }
+  .evv-content { padding: 1.15rem; }
+  .evv-page-header { align-items: flex-start; }
+  .evv-page-header h1 { font-size: 1.45rem; }
+  .evv-operation-hero { padding: 1.35rem; display: block; }
+  .evv-hero-metrics { margin-top: 1.25rem; }
+  .evv-hero-metrics > span { min-width: 0; flex: 1; padding: .15rem .8rem; }
+  .evv-wx-options { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
